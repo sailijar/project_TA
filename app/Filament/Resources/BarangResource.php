@@ -23,11 +23,11 @@ class BarangResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama_barang')
-                    ->required()
-                    ->maxLength(255),
+                // Forms\Components\TextInput::make('nama_barang')
+                //     ->required()
+                //     ->maxLength(255),
 
-                Forms\Components\Select::make('tipe_barang')
+                Forms\Components\Select::make('tipe_papan_bunga')
                     ->options([
                         'ucapan selamat' => 'Ucapan Selamat',
                         'duka cita' => 'Duka Cita',
@@ -36,7 +36,7 @@ class BarangResource extends Resource
                     ])
                     ->required(),
 
-                Forms\Components\Select::make('ukuran_barang')
+                Forms\Components\Select::make('ukuran_papan_bunga')
                     ->options([
                         'kecil' => 'Kecil',
                         'sedang' => 'Sedang',
@@ -63,15 +63,15 @@ class BarangResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama_barang')
-                    ->searchable()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('nama_barang')
+                //     ->searchable()
+                //     ->sortable(),
 
-                Tables\Columns\TextColumn::make('tipe_barang')
+                Tables\Columns\TextColumn::make('tipe_papan_bunga')
                     ->badge()
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('ukuran_barang')
+                Tables\Columns\TextColumn::make('ukuran_papan_bunga')
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('status')

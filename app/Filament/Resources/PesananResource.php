@@ -13,6 +13,10 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+use Filament\Forms\Components\Select;
+// use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\TextColumn;
+
 class PesananResource extends Resource
 {
     protected static ?string $model = Pesanan::class;
@@ -23,25 +27,40 @@ class PesananResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('barang_id')
+                Forms\Components\Select::make('barang_id')
+                    ->relationship('barang', 'tipe_papan_bunga')
+                        ->searchable()
+                        ->preload()
+                        ->required(),
+                Forms\Components\Select::make('pelanggan_id')
+                    ->relationship('pelanggan', 'nama_pelanggan')
+                    ->required(),
+                Forms\Components\TextInput::make('jumlah')
+                    ->tel()
                     ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('pelanggan_id')
-                    ->required()
-                    ->numeric(),
+                    ->maxLength(255),
             ]);
+
+
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('barang_id')
+                Tables\Columns\TextColumn::make('pelanggan.nama_pelanggan')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('pelanggan_id')
+                Tables\Columns\TextColumn::make('barang.tipe_papan_bunga')
                     ->numeric()
                     ->sortable(),
+
+                    TextColumn::make('barang.ukuran_papan_bunga')->label('Ukuran papan bunga')
+                    ->numeric()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('jumlah')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
