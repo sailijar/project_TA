@@ -12,7 +12,7 @@ class Barang extends Model
 
     protected $fillable = [
         'tipe_papan_bunga',
-        'ukuran_papan_bunga',
+        'ukuran',
         'status',
         'harga',
     ];
