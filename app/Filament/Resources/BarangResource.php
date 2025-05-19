@@ -17,7 +17,7 @@ class BarangResource extends Resource
 {
     protected static ?string $model = Barang::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
     public static function form(Form $form): Form
     {
@@ -71,7 +71,7 @@ class BarangResource extends Resource
                     ->badge()
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('ukuran_papan_bunga')
+                Tables\Columns\TextColumn::make('ukuran')
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('status')

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
             $table->enum('tipe_papan_bunga', ['Ucapan Selamat', 'Duka Cita', 'Pernikahan', 'Sunat Rasul']);
-            $table->enum('ukuran_papan_bunga', ['Kecil', 'Sedang', 'Besar']);
+            $table->enum('ukuran', ['Kecil', 'Sedang', 'Besar']);
             $table->enum('status', ['Bayar', 'Belum Bayar'])->default('Belum Bayar');
             $table->decimal('harga', 15, 2);
             $table->timestamps();
